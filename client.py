@@ -13,7 +13,7 @@ def register_device():
             'device_id': DEVICE_ID,
             'timestamp': int(time.time())
         })
-        response.raise_for_status()  # Raise an exception for bad response status
+        response.raise_for_status() 
         return response.json()
     except requests.exceptions.HTTPError as err:
         print(f"HTTP error occurred: {err}")
@@ -28,7 +28,7 @@ def check_in():
             'device_id': DEVICE_ID,
             'timestamp': int(time.time())
         })
-        response.raise_for_status()  # Raise an exception for bad response status
+        response.raise_for_status()  
         return response.json()
     except requests.exceptions.HTTPError as err:
         print(f"HTTP error occurred: {err}")
@@ -40,7 +40,7 @@ def check_in():
 def get_command():
     try:
         response = requests.get(f'{SERVER_URL}/command/{DEVICE_ID}')
-        response.raise_for_status()  # Raise an exception for bad response status
+        response.raise_for_status()  
         return response.json()
     except requests.exceptions.HTTPError as err:
         print(f"HTTP error occurred: {err}")
@@ -96,4 +96,4 @@ if __name__ == '__main__':
         else:
             print("Failed to retrieve command.")
 
-        time.sleep(5)  # Pause for 5 seconds before the next iteration
+        time.sleep(5) 
