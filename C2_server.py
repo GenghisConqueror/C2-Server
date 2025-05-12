@@ -4,11 +4,10 @@ import time
 
 app = Flask(__name__)
 
-# In-memory store for registered devices and commands
+
 devices = {}
 commands = {}
 
-# Endpoint for devices to register themselves
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -31,7 +30,6 @@ def command(device_id):
     else:
         return jsonify({'error': 'Device not found'}), 404
 
-# Endpoint for devices to check-in and report status
 @app.route('/check_in', methods=['POST'])
 def check_in():
     data = request.json
@@ -42,7 +40,7 @@ def check_in():
     else:
         return jsonify({'error': 'Device not registered'}), 404
 
-# Endpoint to view all registered devices
+
 @app.route('/devices', methods=['GET'])
 def get_devices():
     return jsonify(devices)
